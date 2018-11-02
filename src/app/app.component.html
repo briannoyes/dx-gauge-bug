@@ -1,0 +1,16 @@
+<dx-circular-gauge [value]="forecast" class="gauge">
+  <dxo-size [height]="120" [width]="120"></dxo-size>
+  <dxo-scale [startValue]="startValue" [endValue]="endValue" [tickInterval]="tickInterval">
+    <dxo-label [visible]="false"></dxo-label>
+    <dxo-tick [length]="20"></dxo-tick>
+  </dxo-scale>
+  <dxo-value-indicator [offset]="-10" [color]="'black'" [width]="hasData ? 3 : 0"></dxo-value-indicator>
+  <dxo-range-container width="20">
+    <dxi-range *ngIf="greaterIsGood" [startValue]="startValue" [endValue]="planThreshold" [color]="'red'"></dxi-range>
+    <dxi-range *ngIf="greaterIsGood" [startValue]="planThreshold" [endValue]="plan" [color]="'#ffff00'"></dxi-range>
+    <dxi-range *ngIf="greaterIsGood" [startValue]="plan" [endValue]="endValue" [color]="'#008000'"></dxi-range>
+    <dxi-range *ngIf="!greaterIsGood" [startValue]="startValue" [endValue]="plan" [color]="'#008000'"></dxi-range>
+    <dxi-range *ngIf="!greaterIsGood" [startValue]="plan" [endValue]="planThreshold" [color]="'#ffff00'"></dxi-range>
+    <dxi-range *ngIf="!greaterIsGood" [startValue]="planThreshold" [endValue]="endValue" [color]="'red'"></dxi-range>
+  </dxo-range-container>
+</dx-circular-gauge>
